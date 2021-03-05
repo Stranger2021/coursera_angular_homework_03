@@ -1,0 +1,33 @@
+<div>
+  <br><br>
+  <h3>{{ menu.title }}</h3>
+  <table class="table table-striped" ng-if="menu.IsFindItems()">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Short name</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price small</th>
+        <th>Price large</th>
+        <th>Small portion name</th>
+        <th>Large portion name</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr ng-repeat="item in menu.foundItems">
+        <th scope="row">{{ item.id }}</th>
+        <td>{{ item.short_name }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.price_small }}</td>
+        <td>{{ item.price_large }}</td>
+        <td>{{ item.small_portion_name }}</td>
+        <td>{{ item.large_portion_name }}</td>
+        <td><button ng-click="menu.removeItem($index);">Don't want this one!</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
