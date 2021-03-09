@@ -127,7 +127,7 @@ function MenuSearchService($http, PathApi) {
     };
 
     // Возвращаем массив отфильтрованных записей
-    //console.log("Найдено записей: " + foundItems.length);
+    //console.log("Найдено записей: " + foundItems.length); 
     return foundItems;
   }
 
