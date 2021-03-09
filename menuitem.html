@@ -1,7 +1,7 @@
 <div>
   <br><br>
-  <h3>{{ menu.title }}</h3>
-  <table class="table table-striped" ng-if="menu.IsFindItems()">
+  <h3>{{ myFoundItems.title() }}</h3>
+  <table class="table table-striped" ng-if="myFoundItems.IsFindItems()">
     <thead>
       <tr>
         <th>id</th>
@@ -15,9 +15,9 @@
         <th>Operation</th>
       </tr>
     </thead>
-    
+
     <tbody>
-      <tr ng-repeat="item in menu.foundItems">
+      <tr ng-repeat="item in myFoundItems.foundItems">
         <th scope="row">{{ item.id }}</th>
         <td>{{ item.short_name }}</td>
         <td>{{ item.name }}</td>
@@ -26,7 +26,9 @@
         <td>{{ item.price_large }}</td>
         <td>{{ item.small_portion_name }}</td>
         <td>{{ item.large_portion_name }}</td>
-        <td><button ng-click="menu.removeItem($index);">Don't want this one!</button></td>
+        <td>
+          <button ng-click="onRemove({index : $index});">Don't want this one!</button>
+        </td>
       </tr>
     </tbody>
   </table>

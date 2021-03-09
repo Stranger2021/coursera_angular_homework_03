@@ -19,12 +19,21 @@
       <button class="btn btn-primary" ng-click="menu.searchItems();">Narrow It Down For Me!</button>
     </div>
 
-    <!-- found-items should be implemented as a component -->
-    <!-- <found-items found-items="menu.items" on-remove="...."></found-items> -->
+    <!-- Пользовательская директива для вывода списка  -->
+    <found-items my-found-items="menu"
+                 title="menu.title"
+                 on-remove="menu.removeItem(index)">
+    </found-items>
 
-    <found-items my-found-items="menu.foundItems" title="menu.title" on-remove="menu.removeItem($index)"></found-items>
   </div>
-
 
 </body>
 </html>
+
+<!-- ТРЕБУЕТСЯ ДОДЕЛАТЬ
+
+1. Удаление элементов доработать в соответсвии с будущими лекциями об узкоспециализированных контроллерах
+
+2. Попробовать сделать так, чтобы при выводе описания выделялись текстовые блоки, которые мы ищем
+
+3. Пока открыт вопрос с названиями элемента и аттрибута одним именем -->
