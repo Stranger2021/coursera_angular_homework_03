@@ -112,6 +112,8 @@ function MenuSearchService($http, PathApi) {
   // Получение отфильтрованного списка с сервера
   service.getMatchedMenuItems = function (response, searchTerm) {
 
+    foundItems = [];
+
     // При успешном ответе, анализируем элементы и формируем новый массив
     var items = response.data.menu_items;
 
