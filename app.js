@@ -72,7 +72,7 @@ function MenuSearchService($http, PathApi) {
   var service = this;
 
   // Итоговый массив данных
-  var foundItems = [];
+  service.foundItems = [];
 
   // Функция для поиска вхождения текста в свойства элементов массива
   function MyInclude(elementOfList, searchTerm) {
@@ -87,13 +87,13 @@ function MenuSearchService($http, PathApi) {
 
   // Наличие записей в массиве
   service.IsFindItems = function () {
-    return (foundItems.length > 0);
+    return (service.foundItems.length > 0);
   }
 
   //Обновление заголовка списка
   service.UpdateTitle = function() {
     if (service.IsFindItems()) {
-      return "List of Menu (" + foundItems.length +")";
+      return "List of Menu (" + service.foundItems.length +")";
     } else {
       return "Nothing found";
     };
@@ -112,7 +112,7 @@ function MenuSearchService($http, PathApi) {
   // Получение отфильтрованного списка с сервера
   service.getMatchedMenuItems = function (response, searchTerm) {
 
-    foundItems = [];
+    service.foundItems = [];
 
     // При успешном ответе, анализируем элементы и формируем новый массив
     var items = response.data.menu_items;
@@ -121,20 +121,20 @@ function MenuSearchService($http, PathApi) {
     if (searchTerm != "") {
       for (var i=0; i<items.length; i++) {
         if (MyInclude(items[i], searchTerm) == true) {
-          foundItems.push(items[i]);
+          service.foundItems.push(items[i]);
         }
       }
     };
 
     // Возвращаем массив отфильтрованных записей
-    //console.log("Найдено записей: " + foundItems.length); 
-    return foundItems;
+    //console.log("Найдено записей: " + foundItems.length);
+    return service.foundItems;
   }
 
   //Удаление элемента из списка
   service.removeItem = function (itemIndex) {
-    foundItems.splice(itemIndex, 1);
-    return foundItems;
+    service.foundItems.splice(itemIndex, 1);
+    return service.foundItems;
   };
 
 }
